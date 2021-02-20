@@ -93,14 +93,7 @@ a {
 </head>
 <body>
   
-  <p class="alert-success"><?php
-    $exception=Session::get('exception');
-    if($exception)
-    {
-      echo $exception;
-      Session::put('exception',null);
-    }
-    ?>
+ 
 <form action="{{url('/student_update',$student_view->student_id)}}" method="post" enctype="multipart/form-data">
   {{ csrf_field() }}
   <div class="container container_own">
@@ -109,7 +102,7 @@ a {
     <hr>
 
     <label for="name"><b>Student Name</b></label>
-    <input type="text" name="student_name" value="{{$student_view->student_name}}" required>
+    <input type="text"  value="{{$student_view->student_name}}"name="student_name" id="name" required>
 
     <label for="roll"><b>Student Roll</b></label>
     <input type="text" value="{{$student_view->student_roll}}" name="student_roll" id="roll" required>
@@ -133,7 +126,7 @@ a {
    <input type="email" value="{{$student_view->student_email}}" name="student_email" id="email" required><br><br>
 
     <label for="password"><b>Password</b></label>
-    <input type="text" value="{{$student_view->student_password}}" name="student_password" id="password" required>
+    <input type="password" value="{{$student_view->student_password}}" name="student_password" id="password" required>
    
    
 

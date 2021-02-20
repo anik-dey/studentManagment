@@ -29,3 +29,7 @@ Route::post('/savedata','AddStudent@add_student');
 Route::get('/student_delete/{student_id}','AdminController1@studentdelete');
 Route::get('/student_edit/{student_id}','AdminController1@studentedit');
 Route::post('/student_update/{student_id}','AdminController1@studentupdate');
+Route::get('/adminprofile','AdminProfile@view_admin');
+Route::get('/addteacher','AddTeacher@addteacher');
+Route::post('/saveteacher','AddTeacher@savedata');
+Route::get('/allteacher','AllTeacher@allteachers');

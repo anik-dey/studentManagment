@@ -15,6 +15,7 @@ class AdminController1 extends Controller
 {
     public function index()
     {
+        
        return view('admin.admindashboard');
     }
     public function logout()
@@ -39,7 +40,22 @@ class AdminController1 extends Controller
          if ($result){
          Session::put('admin_email',$result->admin_email);
          Session::put('admin_id',$result->admin_id);
-         return Redirect::to('/admindashboard');
+         Session::put('admin_name',$result->admin_name);
+         $admin_id= $result->admin_id;
+         // $manage_admin_view=view('admin.admindashboard')
+         // ->with('admin_view',$result);
+         
+        
+         
+         $manage_student=view('admin.admindashboard')->with('admin_id',$admin_id);
+         return view('admin.admindashboard')->with('admin',$manage_student);
+          return view('admin.admindashboard');
+          
+         
+         
+         //return Redirect::to('/admindashboard');
+          
+         
          
 
                     
@@ -90,10 +106,11 @@ class AdminController1 extends Controller
     public function studentupdate(Request $request,$student_id)
     {
        $data=array();
-       $data['student_name']=$request->sudent_name;
+       
+       $data['student_name']=$request->student_name;
        $data['student_roll']=$request->student_roll;
        $data['student_phone']=$request->student_phone;
-       $data['student_email']=$request->studet_email;
+       $data['student_email']=$request->student_email;
        $data['student_password']=md5($request->student_password);
 
        DB::table('student_tbl')
